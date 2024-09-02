@@ -1,8 +1,13 @@
 {
-  "name": "vite-project",
-  "private": true,
-  "version": "0.0.0",
+  "name": "hnic-svelte",
+  "version": "1.0.13",
   "type": "module",
+  "description": "A reusable Svelte component library",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,13 +15,26 @@
     "check": "svelte-check --tsconfig ./tsconfig.json && tsc -p tsconfig.node.json",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test": "jest"
+    "test": "jest",
+    "chromatic": "npx chromatic --project-token=chpt_36dd4361191f61b",
+    "prepublishOnly": "npm run build"
   },
+  "keywords": [
+    "svelte",
+    "component",
+    "library"
+  ],
+  "author": "Youne",
+  "license": "Apache-2.0",
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.4",
     "@carbon/charts-svelte": "^1.20.0",
     "@chromatic-com/storybook": "^1.7.0",
+    "@storybook/addon-designs": "^8.0.3",
     "@storybook/addon-essentials": "^8.2.9",
     "@storybook/addon-interactions": "^8.2.9",
     "@storybook/addon-links": "^8.2.9",
@@ -34,6 +52,7 @@
     "chromatic": "^11.7.1",
     "jest": "^29.7.0",
     "storybook": "^8.2.9",
+    "storybook-addon-designs": "^6.3.1",
     "svelte": "^4.2.18",
     "svelte-check": "^3.8.4",
     "tslib": "^2.6.3",

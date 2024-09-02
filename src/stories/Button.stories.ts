@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/svelte';
 import Button from './Button.svelte';
+import { expoOut } from 'svelte/easing';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
@@ -45,3 +46,5 @@ export const Small: Story = {
     label: 'Button',
   },
 };
+
+
