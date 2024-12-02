@@ -1,9 +1,22 @@
 @import "_variables.scss";
 @import "typography.scss";
+@mixin display-flex() {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin media-min-width($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
 html {
   font-size: 94.75%;
 
-  @media (min-width: 40rem) {
+  @include media-min-width(40rem) {
     font-size: 125%;
   }
 }
@@ -14,10 +27,7 @@ body {
 }
 
 .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
+  @include display-flex();
   flex: {
     direction: column;
     wrap: nowrap;
@@ -27,54 +37,44 @@ body {
   box-sizing: border-box;
 }
 
-.sass-introduction {
+.sass-section{
   border: $border-default;
   background: lighten(map-get($colors, primary), 74%);
   padding: $size-default * 2;
   text-align: center;
-  box-shadow: 0.2rem 0.2rem 0.1rem #ccc;
   width: 90%;
   box-sizing: border-box;
-
-  @media (min-width: 40rem) {
-    width: $size-default * 30;
+  @include media-min-width(40rem) {
+    width: 30rem;
   }
 }
+.sass-introduction {
+  @extend .sass-section;
+  box-shadow: 0.2rem 0.2rem 0.1rem #ccc;
 
-.sass-introduction p {
-  margin: 0;
+  p {
+    margin: 0;
+  }
 }
 
 .sass-details {
-  border: $border-default;
-  background: lighten(map-get($colors, primary), 74%);
-  padding: $size-default;
-  text-align: center;
+  @extend .sass-section;
   margin: $size-default * 2 0;
-  width: 90%;
-  box-sizing: border-box;
-
-  @media (min-width: 40rem) {
-    width: $size-default * 30;
-  }
 }
 
 .section-header {
   border-bottom: $border-default;
-}
 
-.section-header h1 {
-  margin: 0 0 $size-default 0;
+  h1 {
+    margin: 0 0 $size-default 0;
+  }
 }
 
 .documentation-links {
+  @include display-flex();
   list-style: none;
   margin: $size-default 0 0 0;
   padding: 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
   flex-direction: column;
 
   li {
@@ -89,11 +89,11 @@ body {
   display: block;
   padding: $size-tiny;
   border: 0.05rem solid map-get($colors, primary);
-}
 
-.documentation-links .documentation-link:hover,
-.documentation-links .documentation-link:active {
-  color: white;
-  background: map-get($colors, secondary);
-  border-color: map-get($colors, secondary)
+  &:hover,
+  :active {
+    color: white;
+    background: map-get($colors, secondary);
+    border-color: map-get($colors, secondary)
+  }
 }
