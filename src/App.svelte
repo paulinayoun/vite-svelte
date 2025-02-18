@@ -1,6 +1,7 @@
 <script lang="ts">
   import "carbon-components-svelte/css/all.css";
   import Modal from './Components/Modal.svelte';
+  import Barchart from "./Components/BarChart.svelte";
   import LineChart from "./Components/LineChart.svelte";
 
   let theme = "g90"; // "white" | "g10" | "g80" | "g90" | "g100"
@@ -14,6 +15,7 @@
   </div>
 
   <div class="chart">
+    <Barchart />
     <LineChart />
   </div>
 </main>
